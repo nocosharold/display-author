@@ -4,7 +4,7 @@ const postsReducer = (state = [], action) => {
     switch (action.type) {
         case 'FETCH_POSTS':
             return action.payload;
-    
+
         default:
             return state;
     }
@@ -20,6 +20,7 @@ const userReducer = (state = [], action) => {
             return state;
     }
 };
+
 // the users property will then be accessible in our AuthorName component as state.users
 export default combineReducers({ 
     posts: postsReducer, 

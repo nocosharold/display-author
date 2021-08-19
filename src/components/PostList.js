@@ -3,31 +3,36 @@ import { connect } from 'react-redux';
 // we are now only using fetchPostsAndUsers
 import { fetchPostsAndAuthors } from '../actions';
 import AuthorName from './AuthorName';
+
 class PostList extends Component {
+    
     componentDidMount() {
         // we replaced this.props.fetchPosts
         this.props.fetchPostsAndAuthors();
     }
+    
     render() {
         const posts = this.props.posts.map(post => {
             return (
-                <div className="ui container">
-                    <div className="ui icon message" key="{post.id}">
+                <div className="ui container" key={post.id}>
+                    <div className="ui icon message">
                         <i className="large middle aligned icon user"></i>
                         <div className="content">
                             <div className="header">{post.title}</div>
                             <p>{post.body}</p>
-                            <AuthorName userid={ post.userid } />
+                            <AuthorName userId={ post.userId } />
                         </div>
                     </div>
                 </div>
             );
         })
+        
         return (
             <div className="ui relaxed divided list">
                 { posts }
             </div>
         );
+        
     };
 };
 const mapStateToProps = (state) => {
